@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import SimpleStepDetector from "./SimpleStepDetector";
 
 const ACCEL_RING_SIZE = 50;
 const VEL_RING_SIZE = 10;
@@ -113,7 +112,7 @@ export default function App() {
       <div style={{ display: "flex", alignItems: "center", gap: 48 }}>
         <div className="switch-button">
           <button type="button" onClick={() => setActive(!isActive)}>
-            <div className="label">시작</div>
+            <div className="label">Active</div>
             <div className={isActive ? "indicator on" : "indicator"} />
           </button>
         </div>
