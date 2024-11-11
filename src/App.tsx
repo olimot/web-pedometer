@@ -60,13 +60,11 @@ export default function App() {
         accelRingY[accelRingCounter % ACCEL_RING_SIZE] = currentAccel[1];
         accelRingZ[accelRingCounter % ACCEL_RING_SIZE] = currentAccel[2];
 
+        const size = Math.min(accelRingCounter, ACCEL_RING_SIZE);
         const worldZ = new Float64Array(3);
-        worldZ[0] =
-          sum(accelRingX) / Math.min(accelRingCounter, ACCEL_RING_SIZE);
-        worldZ[1] =
-          sum(accelRingY) / Math.min(accelRingCounter, ACCEL_RING_SIZE);
-        worldZ[2] =
-          sum(accelRingZ) / Math.min(accelRingCounter, ACCEL_RING_SIZE);
+        worldZ[0] = sum(accelRingX) / size;
+        worldZ[1] = sum(accelRingY) / size;
+        worldZ[2] = sum(accelRingZ) / size;
 
         const normalization_factor = norm(worldZ);
 
