@@ -20,7 +20,7 @@ const norm = (numbers: Iterable<number>) => {
 export default function App() {
   const [isActive, setActive] = useState(false);
   const [count, setCount] = useState(0);
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("Press a button to activate pedometer.");
 
   useEffect(() => {
     if (!isActive) return;
@@ -33,6 +33,10 @@ export default function App() {
         } else if (event.error.name === "NotReadableError") {
           setStatus("Cannot connect to the sensor.");
         }
+      });
+
+      accelerometer.addEventListener("actiavte", () => {
+        setStatus("A pedometer is activated.");
       });
 
       let accelRingCounter = 0;
@@ -94,7 +98,10 @@ export default function App() {
       });
 
       accelerometer.start();
-      return () => accelerometer.stop();
+      return () => {
+        accelerometer.stop();
+        setStatus("A Pedometer is stopped.");
+      };
     } catch (error) {
       if (!(error instanceof Error)) throw error;
       if (error.name === "SecurityError") {
