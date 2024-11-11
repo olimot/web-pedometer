@@ -20,7 +20,7 @@ const norm = (numbers: Iterable<number>) => {
 export default function App() {
   const [isActive, setActive] = useState(false);
   const [count, setCount] = useState(0);
-  const [status, setStatus] = useState("Press a button to activate pedometer.");
+  const [status, setStatus] = useState("Press a button to activate it.");
 
   useEffect(() => {
     if (!isActive) return;
@@ -35,7 +35,7 @@ export default function App() {
         }
       });
 
-      accelerometer.addEventListener("actiavte", () => {
+      accelerometer.addEventListener("activate", () => {
         setStatus("A pedometer is activated.");
       });
 
